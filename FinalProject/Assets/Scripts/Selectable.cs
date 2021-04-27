@@ -11,6 +11,26 @@ public class Selectable : MonoBehaviour
     public bool faceUp = true;
     public bool inDeckPile = false;
 
+    public bool playerWin;
+    public bool cpuWin;
+
+    public string playerCard1s;
+    public string playerCard2s;
+    public string playerCard3s;
+    public int playerCard1v;
+    public int playerCard2v;
+    public int playerCard3v;
+
+    public string cpuCard1s;
+    public string cpuCard2s;
+    public string cpuCard3s;
+    public int cpuCard1v;
+    public int cpuCard2v;
+    public int cpuCard3v;
+
+
+    public int playerWinPick;
+    public int cpuWinPick;
     private string valueString;
 
     // Start is called before the first frame update
@@ -88,4 +108,82 @@ public class Selectable : MonoBehaviour
     {
         
     }
+
+    private string Winnner()
+    {
+        string winnerPick = "";
+
+
+        return winnerPick;
+    }
+    private void PlayerHand()
+    {
+        // Three of the Kind
+        if(playerCard1v == playerCard2v && playerCard2v == playerCard3v)
+        {
+            playerWinPick = 6;
+        }
+        // Flush
+        if (playerCard2v == 20)
+        {
+            playerWinPick = 5;
+        }
+        //Stright
+        if (playerCard2v == 20)
+        {
+            playerWinPick = 4;
+        }
+        //SameSuit
+        if (playerCard1s == playerCard2s && playerCard2s == playerCard3s)
+        {
+            playerWinPick = 3;
+        }
+        //Pair
+        if (playerCard1v == playerCard2v || playerCard1v == playerCard3v || playerCard2v == playerCard3v)
+        {
+            playerWinPick = 2;
+        }
+        //High Card
+        else
+        {
+            playerWinPick = 1;
+        }
+
+    }
+
+    private void CpuHand()
+    {
+        // Three of the Kind
+        if (cpuCard1v == cpuCard2v && cpuCard2v == cpuCard3v)
+        {
+            cpuWinPick = 6;
+        }
+        // Flush
+        if (playerCard1v == 20)
+        {
+            cpuWinPick = 5;
+        }
+        //Stright
+        if (cpuCard3v == 20)
+        {
+            cpuWinPick = 4;
+        }
+        //SameSuit
+        if (cpuCard1s == cpuCard2s && cpuCard2s == cpuCard3s)
+        {
+            cpuWinPick = 3;
+        }
+        //Pair
+        if (cpuCard1v == cpuCard2v || cpuCard1v == cpuCard3v || cpuCard2v == cpuCard3v)
+        {
+            cpuWinPick = 2;
+        }
+        //High Card
+        else
+        {
+            cpuWinPick = 1;
+        }
+
+    }
+
 }
